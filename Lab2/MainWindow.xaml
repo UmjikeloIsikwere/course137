@@ -1,0 +1,63 @@
+﻿<Window x:Class="EnemyEditorWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Enemy Editor" Height="433" Width="840">
+
+    <Grid Margin="10">
+        <DataGrid x:Name="EnemiesDataGrid"
+                  AutoGenerateColumns="False"
+                  Margin="0,0,200,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Icon" Binding="{Binding IconName}" Width="*"/>
+                <DataGridTextColumn Header="BaseLife" Binding="{Binding BaseLife}" Width="*"/>
+                <DataGridTextColumn Header="LifeModifier" Binding="{Binding LifeModifier}" Width="*"/>
+                <DataGridTextColumn Header="BaseGold" Binding="{Binding BaseGold}" Width="*"/>
+                <DataGridTextColumn Header="GoldModifier" Binding="{Binding GoldModifier}" Width="*"/>
+                <DataGridTextColumn Header="SpawnChance" Binding="{Binding SpawnChance}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Orientation="Vertical" Margin="610,0,0,0" Width="170">
+            <TextBlock Text="Name:"/>
+            <TextBox x:Name="NameTextBox"/>
+
+            <StackPanel>
+                <TextBlock Text="Icon:" />
+                <ComboBox x:Name="IconComboBox">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding}" Width="16" Height="16" Margin="5,0,5,0" />
+
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock Text="BaseLife:"/>
+            <TextBox x:Name="BaseLifeTextBox"/>
+
+            <TextBlock Text="LifeModifier:"/>
+            <TextBox x:Name="LifeModifierTextBox"/>
+
+            <TextBlock Text="BaseGold:"/>
+            <TextBox x:Name="BaseGoldTextBox"/>
+
+            <TextBlock Text="GoldModifier:"/>
+            <TextBox x:Name="GoldModifierTextBox"/>
+
+            <TextBlock Text="SpawnChance:"/>
+            <TextBox x:Name="SpawnChanceTextBox"/>
+
+            <Button x:Name="AddButton" Content="Add Enemy" Click="AddButton_Click" Margin="0,10,0,0"/>
+            <Button x:Name="RemoveButton" Content="Remove Selected" Click="RemoveButton_Click" Margin="0,10,0,0"/>
+            <Button x:Name="SaveButton" Content="Save (JSON)" Click="SaveButton_Click" Margin="0,10,0,0"/>
+            <Button x:Name="LoadButton" Content="Load (JSON)" Click="LoadButton_Click" Margin="0,10,0,0"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
